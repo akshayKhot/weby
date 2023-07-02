@@ -3,8 +3,6 @@ require 'erb'
 
 class App
   def call(env)
-    headers = { 'Content-Type' => 'text/html' }
-    
     title = get_title(env) # new code here
     template = ERB.new(template_html)
     response_html = template.result(binding)
@@ -20,5 +18,9 @@ class App
 
   def template_html
     File.read 'views/index.html.erb'
+  end
+
+  def headers
+    { 'Content-Type' => 'text/html' }
   end
 end
