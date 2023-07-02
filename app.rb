@@ -1,3 +1,4 @@
+require 'debug'
 require 'erb'
 
 class App
@@ -14,7 +15,7 @@ class App
   def get_title(env)
     query = env['QUERY_STRING'] # "title=ruby"
     values = query.split('=')   # ["title", "ruby"]
-    values[1]                   # ruby
+    values[1] || 'Hello World'  # ruby
   end
 
   def template_html
