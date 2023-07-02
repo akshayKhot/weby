@@ -1,10 +1,17 @@
 require 'debug'
 require 'erb'
 
-class App
-  def call(env)
-    response_html = build_response(env)
+require_relative './router'
 
+class App
+  def initialize
+    @router = Router.new
+    @router.get('/a') { 'Page A' }
+    @router.get('/b') { 'Page B' }
+  end
+
+  def call(env)
+    response_html = @router.build_response(env)
     [200, headers, [response_html]]
   end
 
