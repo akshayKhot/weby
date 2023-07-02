@@ -6,7 +6,9 @@ require_relative './router'
 class App
   def initialize
     @router = Router.new
-    @router.get('/a') { 'Page A' }
+    @router.get('/a') do |env| 
+      'Page A' + env['REQUEST_URI']
+    end
     @router.get('/b') { 'Page B' }
     @router.get('/c', &method(:foo))
   end
@@ -16,7 +18,7 @@ class App
     [200, headers, [response_html]]
   end
 
-  def foo
+  def foo(env)
     'Foo'
   end
 

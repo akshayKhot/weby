@@ -12,9 +12,8 @@ class Router
   def build_response(env)
     path = env['REQUEST_URI']
     blk = routes.fetch(path, nil)
-    
     if blk
-      blk.call
+      blk.call env
     else
       "no route defined for path '#{path}'"
     end
