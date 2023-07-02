@@ -3,11 +3,15 @@ require 'erb'
 
 class App
   def call(env)
-    title = get_title(env) # new code here
-    template = ERB.new(template_html)
-    response_html = template.result(binding)
+    response_html = build_response(env)
 
     [200, headers, [response_html]]
+  end
+
+  def build_response(env)
+    title = get_title(env)
+    template = ERB.new(template_html)
+    template.result(binding)
   end
 
   def get_title(env)
