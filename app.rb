@@ -4,7 +4,7 @@ class App
   def call(env)
     headers = { 'Content-Type' => 'text/html' }
     
-    title = get_title(env) # new code here
+    title = get_title(env)
     template = ERB.new(template_html)
     response_html = template.result(binding)
 
