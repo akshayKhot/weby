@@ -8,11 +8,16 @@ class App
     @router = Router.new
     @router.get('/a') { 'Page A' }
     @router.get('/b') { 'Page B' }
+    @router.get('/c', &method(:foo))
   end
 
   def call(env)
     response_html = @router.build_response(env)
     [200, headers, [response_html]]
+  end
+
+  def foo
+    'Foo'
   end
 
   private
