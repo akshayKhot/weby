@@ -1,7 +1,5 @@
 require_relative './router'
 
-router = Router.instance
-
 Router.draw do
   get('/') { 'Hello World' }
 
