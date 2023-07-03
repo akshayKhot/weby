@@ -5,12 +5,8 @@ require_relative './config/routes'
 class App
   def call(env)
     response_html = router.build_response(env)
-    
-    [200, headers, [response_html]]
-  end
 
-  def foo(env)
-    'Foo'
+    [200, headers, [response_html]]
   end
 
   private
