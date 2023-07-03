@@ -12,7 +12,7 @@ class Router
   end
 
   def initialize
-    @routes = Hash.new
+    @routes = {}
   end
 
   def get(path, &blk)
