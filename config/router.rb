@@ -19,8 +19,9 @@ class Router
     @routes[path] = blk
   end
 
-  def build_response(path)
-    handler = @routes[path] || ->{ "no route found for #{path}" }
-    handler.call
+  def build_response(env)
+    path = env['REQUEST_PATH']
+    handler = @routes[path] || ->(env) { "no route found for #{path}" }
+    handler.call(env)
   end
 end
