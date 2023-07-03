@@ -19,7 +19,7 @@ class App
   def call(env)
     headers = { 'Content-Type' => 'text/html' }
     
-    response_html = router.response_body(env['REQUEST_PATH'])
+    response_html = router.build_response(env['REQUEST_PATH'])
     
     [200, headers, [response_html]]
   end

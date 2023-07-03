@@ -7,7 +7,7 @@ class Router
     @routes[path] = blk
   end
 
-  def response_body(path)
+  def build_response(path)
     handler = @routes[path] || ->{ 'no route found' } 
     handler.call 
   end
