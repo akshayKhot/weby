@@ -1,4 +1,4 @@
-require_relative './router.rb'
+require_relative './router'
 
 class App
   attr_reader :router
