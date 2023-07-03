@@ -1,4 +1,8 @@
+require 'singleton'
+
 class Router
+  include Singleton
+
   attr_reader :routes
 
   def initialize

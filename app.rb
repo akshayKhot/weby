@@ -1,16 +1,10 @@
 require 'debug'
 require 'erb'
-
-require_relative './router'
+require_relative './routes'
 
 class App
   def initialize
-    @router = Router.new
-    @router.get('/a') do |env| 
-      'Page A' + env['REQUEST_URI']
-    end
-    @router.get('/b') { 'Page B' }
-    @router.get('/c', &method(:foo))
+    @router = Router.instance
   end
 
   def call(env)
