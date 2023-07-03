@@ -3,12 +3,9 @@ require 'erb'
 require_relative './config/routes'
 
 class App
-  def initialize
-    @router = Router.instance
-  end
-
   def call(env)
-    response_html = @router.build_response(env)
+    response_html = router.build_response(env)
+    
     [200, headers, [response_html]]
   end
 
@@ -17,6 +14,9 @@ class App
   end
 
   private
+    def router
+      Router.instance
+    end
 
     def build_response(env)
       title = get_title(env)
