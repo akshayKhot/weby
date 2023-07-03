@@ -1,19 +1,14 @@
-require_relative './request.rb'
-
 class Router
-  attr_reader :routes
-
   def initialize
     @routes = {}
   end
 
   def get(path, &blk)
-    routes[path] = blk
+    @routes[path] = blk
   end
 
-  def response_body(env)
-    request = Request.new env
-    clojure = routes[request.path] || ->{ 'no route found' } 
-    clojure.call 
+  def response_body(path)
+    handler = @routes[path] || ->{ 'no route found' } 
+    handler.call 
   end
 end

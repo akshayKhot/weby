@@ -6,13 +6,17 @@ class App
   def initialize
     @router = Router.new
 
-    router.get('/') { 'Hello, World!' }
-    router.get('/post') { 'New Post' }
+    # shows the home page
+    router.get('/') { "Akshay's Blog" }
+    # shows all articles
+    router.get('/articles') { 'All Articles' }
+    # shows a single article
+    router.get('/articles/1') { "First Article" }
   end
 
   def call(env)
     headers = { 'Content-Type' => 'text/html' }
-    response_html = router.response_body(env)
+    response_html = router.response_body(env['REQUEST_PATH'])
     
     [200, headers, [response_html]]
   end
