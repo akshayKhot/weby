@@ -1,6 +1,6 @@
 require 'debug'
 require 'erb'
-require_relative './routes'
+require_relative './config/routes'
 
 class App
   def initialize
