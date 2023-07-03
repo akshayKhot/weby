@@ -2,10 +2,14 @@ require_relative './router'
 
 router = Router.instance
 
-router.get('/') { 'Hello World' }
+Router.draw do
+  get('/') { 'Hello World' }
 
-router.get('/a') do |env| 
-  'Page A' + env['REQUEST_URI']
+  get('/a') do |env| 
+    'Page A' + env['REQUEST_URI']
+  end
+
+  get('/b') { |env| 'Page B' }
+
+  get('/c') { 'This works!!' }
 end
-
-router.get('/b') { |env| 'Page B' }
