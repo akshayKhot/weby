@@ -9,4 +9,6 @@ Router.draw do
     puts "Path: #{env['REQUEST_PATH']}"
     "First Article"
   end
+
+  get 'application#index'
 end
