@@ -1,4 +1,4 @@
-require_relative './config/routes'
+require_relative 'config/routes'
 
 class App
   def call(env)

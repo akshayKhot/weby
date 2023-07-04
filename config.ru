@@ -1,5 +1,5 @@
 require 'rack'
-require_relative './app'
+require_relative 'app'
 
 # Reload source after change
 use Rack::Reloader, 0
