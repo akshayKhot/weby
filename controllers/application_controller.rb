@@ -1,6 +1,7 @@
 class ApplicationController
   def render(view, data)
-    template = ERB.new File.read(view)
+    view_file = "views/#{view.to_s}.html.erb"
+    template = ERB.new File.read(view_file)
     template.result(binding)
   end
 end
