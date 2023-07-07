@@ -10,5 +10,5 @@ Router.draw do
     "First Article"
   end
 
-  get 'application#index'
+  get 'home#index'
 end

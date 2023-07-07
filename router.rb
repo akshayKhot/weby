@@ -1,5 +1,5 @@
 require 'singleton'
-require_relative './controllers/application_controller'
+require_relative './controllers/home_controller'
 
 class Router
   include Singleton
@@ -20,12 +20,12 @@ class Router
     if blk
       @routes[path] = blk
     else
-      if path.include? '#'  # 'application#index'
-        controller, action = path.split('#')  # 'application', 'index'
-        controller_klass_name = controller.capitalize + 'Controller'  # 'ApplicationController'
-        controller_klass = Object.const_get(controller_klass_name)  # ApplicationController
+      if path.include? '#'  # 'home#index'
+        controller, action = path.split('#')  # 'home', 'index'
+        controller_klass_name = controller.capitalize + 'Controller'  # 'HomeController'
+        controller_klass = Object.const_get(controller_klass_name)  # HomeController
         handler = controller_klass.new.method(action.to_sym)  # index
-        @routes[path.gsub('#', '/').prepend('/')] = handler.to_proc  #{ '/application/index' => Proc(index) }
+        @routes[path.gsub('#', '/').prepend('/')] = handler.to_proc  # { '/home/index' => Proc(index) }
       end
     end
   end
