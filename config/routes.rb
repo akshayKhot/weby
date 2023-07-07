@@ -6,4 +6,5 @@ Router.draw do
   get('/articles') { 'All Articles' }
 
   get 'home/index'
+  get 'home/show'
 end
