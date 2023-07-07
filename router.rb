@@ -35,8 +35,14 @@ class Router
   end
 
   def build_response(env)
-    path = env['REQUEST_PATH'].start_with?('/') ? env['REQUEST_PATH'].sub('/', '') : env['REQUEST_PATH']
+    path = get_path(env)
     handler = @routes[path] || ->(env) { "no route found for #{path}" }
     handler.call(env)
   end
+
+  private
+    def get_path(env)
+      path = env['REQUEST_PATH']
+      path.start_with?('/') ? path.sub('/', '') : path
+    end
 end
