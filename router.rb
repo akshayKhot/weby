@@ -1,5 +1,5 @@
 require 'singleton'
-require_relative '../controllers/application_controller'
+require_relative './controllers/application_controller'
 
 class Router
   include Singleton
