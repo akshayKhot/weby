@@ -1,9 +1,8 @@
 require 'erb'
+require_relative 'application_controller'
 
-class HomeController
+class HomeController < ApplicationController
   def index(env)
-    title = "Rack on Rails"
-    template = ERB.new File.read('views/index.html.erb')
-    template.result(binding)
+    render 'views/index.html.erb', title: 'Rack on Rails'
   end
 end
