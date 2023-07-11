@@ -1,5 +1,3 @@
-# controllers/articles_controller.rb
-
 require_relative 'application_controller'
 
 class ArticlesController < ApplicationController
