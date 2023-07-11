@@ -1,4 +1,5 @@
 require 'singleton'
+require_relative 'controllers/articles_controller'
 
 require_relative 'controllers/articles_controller'
 

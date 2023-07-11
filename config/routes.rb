@@ -1,4 +1,5 @@
 require_relative '../router'
+require 'debug'
 
 Router.draw do
   get('/') { "Akshay's Blog" }
