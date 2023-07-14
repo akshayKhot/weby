@@ -22,9 +22,8 @@ class Router
       @routes[path] = blk
     else
       if path.include? '/'                              # 'articles/index'
-        controller_name, action_name = path.split('/')  # 'articles', 'index'
-
-        @routes[path.prepend('/')] = ->(env) {
+        @routes['/' + path] = ->(env) {
+          controller_name, action_name = path.split('/')  # 'articles', 'index'
           controller_klass_name = controller_name.capitalize + 'Controller'   # 'ArticlesController'
           controller_klass = Object.const_get(controller_klass_name)          # ArticlesController
 
