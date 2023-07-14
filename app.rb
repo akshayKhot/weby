@@ -1,4 +1,3 @@
-require 'debug'
 require_relative 'config/routes'
 
 class App
