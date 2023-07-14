@@ -22,13 +22,13 @@ class Router
       @routes[path] = blk
     else
       if path.include? '/'                                            # 'articles/index'
-        controller, action = path.split('/')                          # 'articles', 'index'
-        controller_klass_name = controller.capitalize + 'Controller'  # 'ArticlesController'
+        controller_name, action_name = path.split('/')                          # 'articles', 'index'
+        controller_klass_name = controller_name.capitalize + 'Controller'  # 'ArticlesController'
         controller_klass = Object.const_get(controller_klass_name)    # ArticlesController
         @routes[path.prepend('/')] = ->(env) {
           kontroller = controller_klass.new(env)                      # controller = ArticlesController.new(env)
-          kontroller.send(action.to_sym)                              # controller.index
-          kontroller.render("views/#{controller}/#{action}.html.erb") # controller.render('views/..')
+          kontroller.send(action_name.to_sym)                              # controller.index
+          kontroller.render("views/#{controller_name}/#{action_name}.html.erb") # controller.render('views/..')
         }
       end
     end
