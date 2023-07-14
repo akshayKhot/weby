@@ -23,9 +23,10 @@ class Router
     else
       if path.include? '/'                                            # 'articles/index'
         controller_name, action_name = path.split('/')                          # 'articles', 'index'
-        controller_klass_name = controller_name.capitalize + 'Controller'  # 'ArticlesController'
-        controller_klass = Object.const_get(controller_klass_name)    # ArticlesController
+        
         @routes[path.prepend('/')] = ->(env) {
+          controller_klass_name = controller_name.capitalize + 'Controller'  # 'ArticlesController'
+          controller_klass = Object.const_get(controller_klass_name)    # ArticlesController
           kontroller = controller_klass.new(env)                      # controller = ArticlesController.new(env)
           kontroller.send(action_name.to_sym)                              # controller.index
           kontroller.render("views/#{controller_name}/#{action_name}.html.erb") # controller.render('views/..')
