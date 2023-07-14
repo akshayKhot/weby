@@ -5,7 +5,6 @@ class ArticlesController < ApplicationController
   def index
     @title = 'All Articles'
     @name = 'Akshay'
-    render :index
   end
 
   def render(view)

@@ -26,7 +26,9 @@ class Router
         controller_klass_name = controller.capitalize + 'Controller'  # 'ArticlesController'
         controller_klass = Object.const_get(controller_klass_name)  # ArticlesController
         @routes[path.prepend('/')] = ->(env) {
-          controller_klass.new(env).send(action.to_sym) # ArticlesController.new(env).index
+          kontroller = controller_klass.new(env)
+          kontroller.send(action.to_sym) # ArticlesController.new(env).index
+          kontroller.render action.to_sym
         }
       end
     end
