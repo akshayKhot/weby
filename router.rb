@@ -25,10 +25,10 @@ class Router
         @routes['/' + path] = ->(env) {
           controller_name, action_name = path.split('/')  # 'articles', 'index'
           controller_klass = constantize(controller_name) # ArticlesController
-          kontroller = controller_klass.new(env)          # controller = ArticlesController.new(env)
+          controller = controller_klass.new(env)          # controller = ArticlesController.new(env)
 
-          kontroller.send(action_name.to_sym)             # controller.index
-          kontroller.render("views/#{controller_name}/#{action_name}.html.erb")
+          controller.send(action_name.to_sym)             # controller.index
+          controller.render("views/#{controller_name}/#{action_name}.html.erb")
         }
       end
     end
