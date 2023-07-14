@@ -26,9 +26,10 @@ class Router
         controller_klass_name = controller.capitalize + 'Controller'  # 'ArticlesController'
         controller_klass = Object.const_get(controller_klass_name)  # ArticlesController
         @routes[path.prepend('/')] = ->(env) {
-          kontroller = controller_klass.new(env)
-          kontroller.send(action.to_sym) # ArticlesController.new(env).index
-          kontroller.render action.to_sym
+          kontroller = controller_klass.new(env)                # controller = ArticlesController.new(env)
+          kontroller.send(action.to_sym)                        # controller.index
+          view_file = "views/#{controller}/#{action}.html.erb"  # views/articles/index.html.erb
+          kontroller.render(view_file)                          # controller.render('views/..')
         }
       end
     end
