@@ -21,10 +21,10 @@ class Router
     if blk
       @routes[path] = blk
     else
-      if path.include? '/'  # 'articles/index'
-        controller, action = path.split('/')  # 'articles', 'index'
+      if path.include? '/'                                            # 'articles/index'
+        controller, action = path.split('/')                          # 'articles', 'index'
         controller_klass_name = controller.capitalize + 'Controller'  # 'ArticlesController'
-        controller_klass = Object.const_get(controller_klass_name)  # ArticlesController
+        controller_klass = Object.const_get(controller_klass_name)    # ArticlesController
         @routes[path.prepend('/')] = ->(env) {
           kontroller = controller_klass.new(env)                      # controller = ArticlesController.new(env)
           kontroller.send(action.to_sym)                              # controller.index
