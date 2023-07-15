@@ -1,4 +1,3 @@
-require 'erb'
 require_relative 'application_controller'
 
 class ArticlesController < ApplicationController

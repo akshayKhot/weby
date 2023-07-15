@@ -1,3 +1,5 @@
+require 'erb'
+
 class ApplicationController
   attr_reader :env
   
