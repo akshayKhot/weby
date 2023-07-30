@@ -1,15 +1,24 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    debug (1.8.0)
+      irb (>= 1.5.0)
+      reline (>= 0.3.1)
+    io-console (0.6.0)
+    irb (1.7.4)
+      reline (>= 0.3.6)
     nio4r (2.5.9)
     puma (6.3.0)
       nio4r (~> 2.0)
     rack (3.0.8)
+    reline (0.3.7)
+      io-console (~> 0.5)
 
 PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  debug (~> 1.8)
   puma (~> 6.3)
   rack (~> 3.0)
 
