@@ -1,5 +1,3 @@
-require_relative 'application_controller'
-require_relative '../models/article'
 
 class ArticlesController < ApplicationController
   def index
