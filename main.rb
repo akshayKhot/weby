@@ -1,5 +1,12 @@
-require 'logger'
+class App
+  def initialize
+    loader = Zeitwerk::Loader.new
 
-logger = Logger.new($stdout)
+    autoload_paths = ['models', 'controllers', 'views']
+    autoload_paths.each do |dir|
+      loader.push_dir(dir)
+    end
 
-logger.error('debugging')
+    loader.setup
+  end
+end

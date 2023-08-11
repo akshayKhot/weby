@@ -13,6 +13,7 @@ GEM
     rack (3.0.8)
     reline (0.3.7)
       io-console (~> 0.5)
+    zeitwerk (2.6.11)
 
 PLATFORMS
   x86_64-darwin-21
@@ -21,6 +22,7 @@ DEPENDENCIES
   debug (~> 1.8)
   puma (~> 6.3)
   rack (~> 3.0)
+  zeitwerk (~> 2.6)
 
 BUNDLED WITH
    2.4.14
