@@ -5,10 +5,7 @@ require_relative 'config/routes'
 
 class App
   def initialize
-    loader = Zeitwerk::Loader.new
-    loader.push_dir('models')
-    loader.push_dir('controllers')
-    loader.setup
+    setup_autoloading!
   end
 
   def call(env)
@@ -22,5 +19,12 @@ class App
   private
     def router
       Router.instance
+    end
+
+    def setup_autoloading!
+      loader = Zeitwerk::Loader.new
+      loader.push_dir('models')
+      loader.push_dir('controllers')
+      loader.setup
     end
 end
